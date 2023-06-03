@@ -1,0 +1,1 @@
+package cgginterns.hibernate.map2;

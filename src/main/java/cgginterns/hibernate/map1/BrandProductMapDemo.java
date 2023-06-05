@@ -44,24 +44,25 @@ public class BrandProductMapDemo {
 		
 		
 		Session session = factory.openSession();
-		Transaction tx = session.beginTransaction();
-		
-		
-		session.save(brand);
-		session.save(product);
-		session.save(product1);
-		session.save(product2);
-		
-		tx.commit();
+//		Transaction tx = session.beginTransaction();
+//		
+//		
+//		session.save(brand);
+//		session.save(product);
+//		session.save(product1);
+//		session.save(product2);
+//		
+//		tx.commit();
 		
 		
 		
 		//Fetching objects
 		Brand br=(Brand)session.get(Brand.class, 1);
 		System.out.println(br.getBrandName());
-		for(Product prod: br.getProducts()) {
-			System.out.println(prod.getProductName());
-		}
+		System.out.println(br.getProducts().size());
+//		for(Product prod: br.getProducts()) {
+//			System.out.println(prod.getProductName());
+//		}
 		
 		session.close();
 		

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -16,8 +17,7 @@ public class Brand {
 	@Column(name="brand_name")
 	private String brandName;
 	
-	@OneToMany(mappedBy="brand")
-	
+	@OneToMany(mappedBy="brand",fetch=FetchType.EAGER)
 	List<Product> products;
 	
 	public Brand(int brandId, String brandName) {

@@ -55,12 +55,19 @@
 	
 	<mapping class="cgginterns.hibernate.map1.Product"/>
 	
+	
 	<mapping class="cgginterns.hibernate.map2.Employee"/>
 	
 	<mapping class="cgginterns.hibernate.map2.Project"/>
 	
+	
 	<mapping class="cgginterns.hibernate.map3.Students"/>
+	
 	<mapping class="cgginterns.hibernate.map3.Subject"/>
+	
+	<mapping class="cgginterns.hibernate.studentmanage.StudentManagement"/>
+	
+	<mapping class="cgginterns.hibernate.studentmanage1.StudentSS"/>
 	
 	
 	

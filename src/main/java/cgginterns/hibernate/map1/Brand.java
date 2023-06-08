@@ -2,6 +2,7 @@ package cgginterns.hibernate.map1;
 
 import java.util.List;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,9 +10,18 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
+@Cacheable
+@Cache(usage=CacheConcurrencyStrategy.READ_ONLY,region="parent_children")
 public class Brand {
 	
+	@Override
+	public String toString() {
+		return "Brand [brandId=" + brandId + ", brandName=" + brandName + ", products=" + products + "]";
+	}
 	@Id
 	@Column(name="brand_id")
 	private int brandId;
@@ -19,6 +29,7 @@ public class Brand {
 	private String brandName;
 	
 	@OneToMany(mappedBy="brand",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	@Cache(usage=CacheConcurrencyStrategy.READ_ONLY)
 	List<Product> products;
 	
 	public Brand(int brandId, String brandName) {

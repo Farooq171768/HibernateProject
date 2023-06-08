@@ -1,11 +1,17 @@
 package cgginterns.hibernate.map1;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
+@Cacheable
+@Cache(usage=CacheConcurrencyStrategy.READ_ONLY)
 public class Product {
 
 	@Id
@@ -15,6 +21,7 @@ public class Product {
 	private String productName;
 	
 	@ManyToOne
+	@Cache(usage=CacheConcurrencyStrategy.READ_ONLY)
 	private Brand brand;
 	
 	
@@ -44,6 +51,10 @@ public class Product {
 	}
 	public void setBrand(Brand brand) {
 		this.brand = brand;
+	}
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productName=" + productName + ", brand=" + brand + "]";
 	}
 	
 	

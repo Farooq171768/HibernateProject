@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    <class name="cgg.hibernate.xmlmapping.Department" table="Department">
+    
+    <id name="deptId" column="dept_id">
+    <generator class="native"></generator>
+    </id>
+    <property name="deptName" column="dept_name" type="string"/>
+    
+    <list name="employees"  cascade="all" lazy="true" fetch="select" inverse="true">
+    <key column="deptId"/>
+    <list-index column="id_x"/>
+    
+    
+    <one-to-many class="cgg.hibernate.xmlmapping.Employeee"/>
+    
+    
+    
+    
+    </list>
+    
+   
+    </class>
+   </hibernate-mapping>
